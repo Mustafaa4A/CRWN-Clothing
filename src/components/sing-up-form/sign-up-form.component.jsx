@@ -96,7 +96,9 @@ const SignUPForm = () => {
           onChange={handlerChange}
         />
 
-        <Button children={"Sign Up"} type="submit" buttonType={""} />
+        <Button type="submit" buttonType={""}>
+          SIGN UP
+        </Button>
       </form>
     </div>
   );
