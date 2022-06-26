@@ -33,11 +33,7 @@ const SignInForm = () => {
   const handlerSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await signInteAuthUseWithEmailAndPassword(
-        email,
-        password
-      );
-
+      await signInteAuthUseWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -55,8 +51,7 @@ const SignInForm = () => {
 
   //sign in with google
   const signInWithGoogle = async () => {
-    const { user } = await signInnWithGooglePopup(); // destructiong the user inside the response
-    await createUserDocumentFromAuth(user);
+    await signInnWithGooglePopup(); // destructiong the user inside the response
   };
 
   return (

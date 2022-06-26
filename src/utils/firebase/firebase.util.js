@@ -6,6 +6,8 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -34,6 +36,8 @@ export const auth = getAuth();
 //3. create a function that displays the popup
 export const signInnWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
+
+//
 export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
@@ -46,7 +50,7 @@ export const createUserDocumentFromAuth = async (userAuth, addtionalData) => {
   //get the actual instance of the loged user
   const userDocRef = doc(db, "users", userAuth.uid);
 
-  // read the signed user from the fire base
+  // read the signed user from the firebase
   const userSnapshot = await getDoc(userDocRef);
 
   //if user does not exit the store in the firebase
@@ -82,3 +86,10 @@ export const signInteAuthUseWithEmailAndPassword = async (email, password) => {
 
   return signInWithEmailAndPassword(auth, email, password);
 };
+
+//SIGN OUT METHOD
+export const signOutUser = () => signOut(auth);
+
+//
+export const onAuthStateChangedLister = (callback) =>
+  onAuthStateChanged(auth, callback);
