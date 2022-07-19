@@ -1,12 +1,12 @@
 import { useState } from "react";
 import {
-  createUserDocumentFromAuth,
   signInnWithGooglePopup,
   signInteAuthUseWithEmailAndPassword,
 } from "../../utils/firebase/firebase.util";
-import Button from "../button/button.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
-import "./style-in-form.styles.scss";
+
+import { SignInContainer, ButtonsContainer } from "./style-in-form.styles";
 
 const defaultForm = {
   email: "",
@@ -55,9 +55,9 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-up-container">
+    <SignInContainer>
       <h2>Don't have an account?</h2>
-      <span>Sign Ip With Email and Password</span>
+      <span>Sign In With Email and Password</span>
       <form action="POST" onSubmit={handlerSubmit}>
         <FormInput
           label={"Email"}
@@ -78,20 +78,20 @@ const SignInForm = () => {
           onChange={handlerChange}
         />
 
-        <div className="buttons-container">
-          <Button type="submit" buttonType={""}>
+        <ButtonsContainer>
+          <Button type="submit" buttonType={BUTTON_TYPE_CLASSES.base}>
             SIGN IN
           </Button>
           <Button
             type="button"
-            buttonType={"google-sign-in"}
+            buttonType={BUTTON_TYPE_CLASSES.google}
             onClick={signInWithGoogle}
           >
             GOOGLE SIGN IN
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 

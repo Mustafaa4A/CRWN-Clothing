@@ -3,9 +3,10 @@ import {
   createAuthUseWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.util";
-import Button from "../button/button.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
-import "./style-up-form.styles.scss";
+
+import { SignUpContainer } from "./style-up-form.styles";
 
 const defaultForm = {
   displayName: "",
@@ -54,7 +55,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="sign-up-container">
+    <SignUpContainer>
       <h2>Don't have an account?</h2>
       <span>Sign Ip With Email and Password</span>
       <form action="POST" onSubmit={handlerSubmit}>
@@ -97,11 +98,11 @@ const SignUpForm = () => {
           onChange={handlerChange}
         />
 
-        <Button type="submit" buttonType={""}>
+        <Button type="submit" buttonType={BUTTON_TYPE_CLASSES.base}>
           SIGN UP
         </Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 
